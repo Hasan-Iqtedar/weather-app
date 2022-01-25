@@ -66,7 +66,7 @@ main {
   color: rgb(248, 240, 240);
 }
 
-main h2 {
+main #city {
   font-size: 40px;
   margin-left: 10px;
   margin-bottom: 15px;
