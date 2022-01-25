@@ -13,12 +13,17 @@ let domHandler = (() => {
   };
 
   let updateContent = (data) => {
+    try {
     city.textContent = data.name;
     temperature.textContent = data.temperature + " °F";
     details[0].textContent = data.feelsLike + " °F";
     details[1].textContent = data.weather;
     details[2].textContent = data.humidity;
     details[3].textContent = data.windSpeed;
+    }
+    catch (err) {
+      console.log("Check city name!");
+    }
   };
 
   location.addEventListener("keyup", (e) => {
@@ -38,7 +43,7 @@ let domHandler = (() => {
 
   let initialize = (location) => {
     weather.getWeather(location).then((data) => updateContent(data));
-  };
+  }
 
   return { initialize };
 })();
