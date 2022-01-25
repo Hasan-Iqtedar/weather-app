@@ -38,7 +38,7 @@ let domHandler = (() => {
 
   let initialize = (location) => {
     weather.getWeather(location).then((data) => updateContent(data));
-  }
+  };
 
   return { initialize };
 })();
