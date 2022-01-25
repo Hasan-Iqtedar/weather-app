@@ -1,19 +1,20 @@
 body {
-  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
   background-image: url(./background_50.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 header {
   display: flex;
   align-items: center;
   padding: 10px;
-  /* border: 1px solid blue; */
 }
 
 header h1 {
-    color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .input-container {
@@ -36,7 +37,6 @@ input {
   margin-left: 5px;
   color: white;
   background-color: transparent;
-  /* padding: 5px; */
 }
 
 input:focus {
@@ -60,10 +60,10 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  margin-left: 100px;
   height: fit-content;
-  width: 30%;
+  width: fit-content;
   color: rgb(248, 240, 240);
+  align-self: center;
 }
 
 main #city {
@@ -73,11 +73,28 @@ main #city {
 }
 
 main label {
+  font-size: small;
   margin-bottom: 10px;
 }
 
 #temperature {
   margin-bottom: 15px;
-  font-size: 30px;
-  font-weight: bold;;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (min-width: 630px) {
+  main {
+    width: 30%;
+    margin-left: 100px;
+    align-self: normal;
+  }
+
+  #temperature {
+    font-size: 30px;
+  }
+
+  main label {
+    font-size: medium;
+  }
 }
