@@ -5,10 +5,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width:device-width, initial-scale=1" />
     <link href="./main.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>Weather App</title>
   </head>
 
   <body>
+    <header>
+      <h1>Weather App</h1>
+      <div class="input-container">
+        <input
+          type="text"
+          id="location"
+          name="location-field"
+          value=""
+          placeholder="Search City"
+        />
+        <span id="search-icon" class="material-icons"> search </span>
+      </div>
+    </header>
+
+    <main>
+      <h2>London</h2>
+      <span id="temperature">37 °F</span>
+      <label><b>Feels Like:</b> 37 °F</label>
+      <label><b>Weather:</b> Sunny</label>
+      <label><b>Humidity:</b> 123</label>
+      <label><b>Wind:</b> 32</label>
+    </main>
+
     <script src="./../dist/main.js"></script>
   </body>
 </html>
