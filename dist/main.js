@@ -16,7 +16,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _weather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weather */ \"./src/weather.js\");\n\n\n_weather__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getWeather(\"London\");\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ui */ \"./src/ui.js\");\n\n\n_ui__WEBPACK_IMPORTED_MODULE_0__[\"default\"].initialize(\"Islamabad\");\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/ui.js":
+/*!*******************!*\
+  !*** ./src/ui.js ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _weather__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weather */ \"./src/weather.js\");\n\n\nlet domHandler = (() => {\n  let location = document.querySelector(\"#location\");\n  let searchBtn = document.querySelector(\"#search-icon\");\n\n  let city = document.querySelector(\"#city\");\n  let temperature = document.querySelector(\"#temperature\");\n  let details = document.querySelectorAll(\".details\");\n\n  let getLocation = () => {\n    return location.value;\n  };\n\n  let updateContent = (data) => {\n    city.textContent = data.name;\n    temperature.textContent = data.temperature + \" °F\";\n    details[0].textContent = data.feelsLike + \" °F\";\n    details[1].textContent = data.weather;\n    details[2].textContent = data.humidity;\n    details[3].textContent = data.windSpeed;\n  };\n\n  location.addEventListener(\"keyup\", (e) => {\n    if (e.keyCode == 13) {\n      searchBtn.click();\n    }\n  });\n\n  searchBtn.addEventListener(\"click\", () => {\n    let location = getLocation();\n    if (location) {\n      _weather__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getWeather(location).then((data) => {\n        updateContent(data);\n      });\n    }\n  });\n\n  let initialize = (location) => {\n    _weather__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getWeather(location).then((data) => updateContent(data));\n  }\n\n  return { initialize };\n})();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (domHandler);\n\n\n//# sourceURL=webpack://weather-app/./src/ui.js?");
 
 /***/ }),
 
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wea
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nlet weather = (() => {\n  let apiKey = \"d9f7ecce0fe14652d86845b06833e3ff\";\n\n  let processData = (data) => {\n    let name = data.name;\n    let temperature = data.main.temp;\n    let feelsLike = data.main.feels_like;\n    let humidity = data.main.humidity;\n    let country = data.sys.country;\n    let weather = data.weather[0].description;\n    let windSpeed = data.wind.speed;\n\n    return {\n      name,\n      country,\n      weather,\n      temperature,\n      feelsLike,\n      humidity,\n      windSpeed,\n    };\n  };\n\n  let getWeather = (location) => {\n    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${apiKey}`;\n    fetch(url, {\n      mode: \"cors\",\n    })\n      .then((response) => response.json())\n      .then((data) => {\n        console.log(data);\n        console.table(processData(data));\n      })\n      .catch((err) => console.log(\"Error: \" + err));\n  };\n\n  return { getWeather };\n})();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (weather);\n\n\n//# sourceURL=webpack://weather-app/./src/weather.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nlet weather = (() => {\n  let apiKey = \"d9f7ecce0fe14652d86845b06833e3ff\";\n\n  let processData = (data) => {\n    let name = data.name;\n    let temperature = data.main.temp;\n    let feelsLike = data.main.feels_like;\n    let humidity = data.main.humidity;\n    let country = data.sys.country;\n    let weather = data.weather[0].description;\n    let windSpeed = data.wind.speed;\n\n    return {\n      name,\n      country,\n      weather,\n      temperature,\n      feelsLike,\n      humidity,\n      windSpeed,\n    };\n  };\n\n  let getWeather = (location) => {\n    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${apiKey}`;\n    return fetch(url, {\n      mode: \"cors\",\n    })\n      .then((response) => response.json())\n      .then((data) => {\n        return processData(data);\n      })\n      .catch((err) => console.log(\"Error: \" + err));\n  };\n\n  return { getWeather };\n})();\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (weather);\n\n\n//# sourceURL=webpack://weather-app/./src/weather.js?");
 
 /***/ })
 

@@ -23,13 +23,12 @@ let weather = (() => {
 
   let getWeather = (location) => {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${apiKey}`;
-    fetch(url, {
+    return fetch(url, {
       mode: "cors",
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        console.table(processData(data));
+        return processData(data);
       })
       .catch((err) => console.log("Error: " + err));
   };

@@ -1,3 +1,3 @@
-import weather from "./weather";
+import domHandler from "./ui";
 
-weather.getWeather("London");
+domHandler.initialize("Islamabad");
